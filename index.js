@@ -12,13 +12,13 @@ var cookieParser = require('cookie-parser')
 mongoose.connect('mongodb://localhost:27017/nightlifecoord')
 
 
-app.use(cookieSession({
-	name:'jwt',
-	maxAge:5*60*100,
-	signed:false,
-	httpOnly:false
+// app.use(cookieSession({
+// 	name:'jwt',
+// 	maxAge:5*60*100,
+// 	signed:false,
+// 	httpOnly:false
 	
-}))
+// }))
 app.use(cookieParser())
 app.use(passport.initialize())
 app.use(passport.session())

@@ -15,17 +15,9 @@ module.exports = function(app){
 	// app.get('/google/redirect',passport.authenticate('google') ,(req,res)=>{
 	// 	res.send("reached the call back uri")
 	// })
-	app.get('/google/redirect', 
-	passport.authenticate('google'),
-	Authentication.signgoogle
-	// function(req, res) {
-		
-	// 	console.log(req.user)
-	// 	console.log("trolismo")
-	// 	res.cookie('cookiename', 'cookievalue', { maxAge: 900000, httpOnly: false });
-	// 	res.redirect('/');
-	// 	}
-	);
+	app.get('/google/redirect',	passport.authenticate('google'),Authentication.signgoogle)
+	
+	
 
 
 }
