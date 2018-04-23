@@ -1,28 +1,48 @@
-import React from 'react';
-import {BrowserRouter,Route} from 'react-router-dom'
+import React,{Component} from 'react';
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
+import SigninTwitter from './signintwitter'
 
-const Hello = () =>{
-		{return <div>hello</div>}
+
+class Hello extends Component{
+		componentDidMount(){
+			console.log(document.cookie)
+		}
+		render(){
+			return (
+			<div>hello</div>
+			)
+		}
 	}
-
-class Goodbye extends React.Component{
+class Goodbye extends Component{
 		render(){return <div>Goodbye</div>}
 	}
 
-class VotingApp extends React.Component{
+class VotingApp extends Component{
 
 	
 	
 
 	render(){
 		return(
+			
 				<BrowserRouter>
 					<div>
-						world
-						<Route path="/Hello" component={Hello}/>
-						<Route path="/Goodbye" component={Goodbye}/>
+						
+						<Switch>
+ 							
+							{this.props.children}
+							
+							<Route path="/signintwitter" component={SigninTwitter}/>
+							<Route path="/Hello" component={Hello}/>
+							<Route path="/Goodbye" component={Goodbye}/> 
+							<Route path="/" component={Hello}/>
+						</Switch>
 					</div>
 				</BrowserRouter>
+			
+
+
+
 			)
 	}
 }

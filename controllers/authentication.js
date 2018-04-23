@@ -8,10 +8,18 @@ function tokenForUser(user){
 }
 
 exports.signin = function(req,res,next){
+
+	
 	res.send({token:tokenForUser(req.user)})
 }
+// exports signupTwitter = function(req,res,next){
 
-
+// }
+exports.signgoogle = function(req,res,next){
+	res.cookie('token', tokenForUser(req.user), { maxAge: 900000, httpOnly: false });
+	res.redirect('/');
+	// res.send({token:tokenForUser(req.user)})
+}
 exports.signup = function(req,res,next){
 
 	const email = req.body.email;

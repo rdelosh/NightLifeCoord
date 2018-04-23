@@ -3,7 +3,7 @@ const User = require('../models/user')
 const config = require('../config')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
-
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const LocalStrategy = require('passport-local').Strategy
 
 
@@ -35,9 +35,49 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload,done){
 		if(user){
 			done(null,user);
 		}else{
-			done(null,fulse)
+			done(null,false)
 		}
 	})
 })
+
+passport.serializeUser((user,done)=>{
+	done(null,user.id)
+})
+
+passport.deserializeUser((id,done)=>{
+	User.findById(id).then((user)=>{
+		done(null,user)
+	})
+	
+})
+
+const googleOptions = {
+	clientID: config.clientID,
+    clientSecret: config.clientSecret,
+    callbackURL: config.callbackURL
+}
+const googleLogin = new GoogleStrategy(googleOptions,function(token, tokenSecret, profile, done) {
+	// console.log(profile)
+	
+    User.findOne({googleid:profile.id}, function(err, currentUser) {
+	  if (err) { return done(err); }
+	  if(currentUser){
+		   return done(null,currentUser)
+	  }else{
+		var newuser = new User
+		newuser.email=profile.id
+		newuser.googleid = profile.id
+		newuser.save().then(saveduser=>{
+			return done(null,saveduser)
+		})
+	  }
+	  
+      
+	});
+	// return done(null,profile)
+	
+  })
+
 passport.use(jwtLogin)
 passport.use(localLogin)
+passport.use(googleLogin)

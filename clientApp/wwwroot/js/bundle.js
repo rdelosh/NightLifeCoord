@@ -19840,6 +19840,10 @@
 
 	var _reactRouterDom = __webpack_require__(161);
 
+	var _signintwitter = __webpack_require__(208);
+
+	var _signintwitter2 = _interopRequireDefault(_signintwitter);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19848,18 +19852,36 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Hello = function Hello() {
-		{
-			return _react2.default.createElement(
-				'div',
-				null,
-				'hello'
-			);
-		}
-	};
+	var Hello = function (_Component) {
+		_inherits(Hello, _Component);
 
-	var Goodbye = function (_React$Component) {
-		_inherits(Goodbye, _React$Component);
+		function Hello() {
+			_classCallCheck(this, Hello);
+
+			return _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).apply(this, arguments));
+		}
+
+		_createClass(Hello, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				console.log(document.cookie);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					'hello'
+				);
+			}
+		}]);
+
+		return Hello;
+	}(_react.Component);
+
+	var Goodbye = function (_Component2) {
+		_inherits(Goodbye, _Component2);
 
 		function Goodbye() {
 			_classCallCheck(this, Goodbye);
@@ -19879,10 +19901,10 @@
 		}]);
 
 		return Goodbye;
-	}(_react2.default.Component);
+	}(_react.Component);
 
-	var VotingApp = function (_React$Component2) {
-		_inherits(VotingApp, _React$Component2);
+	var VotingApp = function (_Component3) {
+		_inherits(VotingApp, _Component3);
 
 		function VotingApp() {
 			_classCallCheck(this, VotingApp);
@@ -19899,16 +19921,22 @@
 					_react2.default.createElement(
 						'div',
 						null,
-						'world',
-						_react2.default.createElement(_reactRouterDom.Route, { path: '/Hello', component: Hello }),
-						_react2.default.createElement(_reactRouterDom.Route, { path: '/Goodbye', component: Goodbye })
+						_react2.default.createElement(
+							_reactRouterDom.Switch,
+							null,
+							this.props.children,
+							_react2.default.createElement(_reactRouterDom.Route, { path: '/signintwitter', component: _signintwitter2.default }),
+							_react2.default.createElement(_reactRouterDom.Route, { path: '/Hello', component: Hello }),
+							_react2.default.createElement(_reactRouterDom.Route, { path: '/Goodbye', component: Goodbye }),
+							_react2.default.createElement(_reactRouterDom.Route, { path: '/', component: Hello })
+						)
 					)
 				);
 			}
 		}]);
 
 		return VotingApp;
-	}(_react2.default.Component);
+	}(_react.Component);
 
 	exports.default = VotingApp;
 
@@ -24680,6 +24708,55 @@
 	        return targetComponent;
 	    };
 	});
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SignInTwitter = function (_Component) {
+	    _inherits(SignInTwitter, _Component);
+
+	    function SignInTwitter() {
+	        _classCallCheck(this, SignInTwitter);
+
+	        return _possibleConstructorReturn(this, (SignInTwitter.__proto__ || Object.getPrototypeOf(SignInTwitter)).apply(this, arguments));
+	    }
+
+	    _createClass(SignInTwitter, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "a",
+	                { href: "/auth/google" },
+	                "sign in with twitter"
+	            );
+	        }
+	    }]);
+
+	    return SignInTwitter;
+	}(_react.Component);
+
+	exports.default = SignInTwitter;
 
 /***/ })
 /******/ ]);
