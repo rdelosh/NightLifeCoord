@@ -1,11 +1,12 @@
 import React,{Component} from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
-import SigninTwitter from './signintwitter'
+
 import Header from './header'
 import SignOut from './auth/signout'
 import SignIn from './auth/signinform'
 import SignUp from './auth/signup'
 import Welcome from './auth/welcome'
+import LandingPage from './landingpage'
 
 class Hello extends Component{
 		
@@ -37,10 +38,10 @@ class VotingApp extends Component{
 							<Route path="/signup" component={SignUp}/>
 							<Route path="/signout" component={SignOut}/>
 							<Route path="/signin" component={SignIn}/>
-							<Route path="/signintwitter" component={SigninTwitter}/>
+							
 							<Route path="/Hello" component={Hello}/>
 							<Route path="/Goodbye" component={Goodbye}/> 
-							<Route path="/" component={Hello}/>
+							<Route path="/" component={LandingPage}/>
 						</Switch>
 					</div>
 				</BrowserRouter>
