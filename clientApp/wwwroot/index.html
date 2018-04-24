@@ -13,6 +13,15 @@
 		body{
 			padding-top:80px;
 		}
+		.SlideIn-appear {
+		transform: translateX(100%);
+		opacity: 0;
+		}
+		.SlideIn-appear.SlideIn-appear-active {
+			opacity: 1;
+			transform: translateX(0);;
+			transition: all 0.2s linear;
+		}
 	</style>
 </head>
 <body>

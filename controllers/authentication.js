@@ -16,8 +16,15 @@ exports.signin = function(req,res,next){
 
 // }
 exports.signgoogle = function(req,res,next){
+	console.log(req.query.state)
+	
 	res.cookie('token', tokenForUser(req.user), { maxAge: 900000, httpOnly: false });
-	res.redirect('/');
+	if(typeof(req.query.state) === "undefined"){
+		res.redirect('/welcome');
+	}else{
+		res.redirect('/'+req.query.state);
+	}
+	
 	// res.send({token:tokenForUser(req.user)})
 }
 exports.signup = function(req,res,next){

@@ -7,6 +7,7 @@ import SignIn from './auth/signinform'
 import SignUp from './auth/signup'
 import Welcome from './auth/welcome'
 import LandingPage from './landingpage'
+import PageWrapper from './PageWrapper'
 
 class Hello extends Component{
 		
@@ -34,14 +35,14 @@ class VotingApp extends Component{
 						<Switch>
  							
 							{this.props.children}
-							<Route path="/welcome" component={Welcome}/>
-							<Route path="/signup" component={SignUp}/>
-							<Route path="/signout" component={SignOut}/>
-							<Route path="/signin" component={SignIn}/>
+							<Route path="/welcome" component={PageWrapper(Welcome)}/>
+							<Route path="/signup" component={PageWrapper(SignUp)}/>
+							<Route path="/signout" component={PageWrapper(SignOut)}/>
+							<Route path="/signin" component={PageWrapper(SignIn)}/>
 							
-							<Route path="/Hello" component={Hello}/>
-							<Route path="/Goodbye" component={Goodbye}/> 
-							<Route path="/" component={LandingPage}/>
+							<Route path="/Hello" component={PageWrapper(Hello)}/>
+							<Route path="/Goodbye" component={PageWrapper(Goodbye)}/> 
+							<Route path="/" component={PageWrapper(LandingPage)}/>
 						</Switch>
 					</div>
 				</BrowserRouter>

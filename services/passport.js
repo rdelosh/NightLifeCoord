@@ -58,7 +58,8 @@ const googleOptions = {
 }
 const googleLogin = new GoogleStrategy(googleOptions,function(token, tokenSecret, profile, done) {
 	// console.log(profile)
-	
+	console.log("token")
+	console.log(token)
     User.findOne({googleid:profile.id}, function(err, currentUser) {
 	  if (err) { return done(err); }
 	  if(currentUser){

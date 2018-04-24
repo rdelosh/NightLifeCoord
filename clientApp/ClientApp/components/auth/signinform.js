@@ -54,6 +54,9 @@ class SignInForm extends Component{
 		        </button>
 		      </form>
 					<h1>Or</h1>
+					{
+						//   /auth/google?returnto=Goodbye
+					}
 					<a href="/auth/google">sign in with Google</a>
 					</div>
 		      
