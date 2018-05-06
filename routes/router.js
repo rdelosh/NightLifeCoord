@@ -23,7 +23,7 @@ module.exports = function(app){
 			})(req, res)
 		});
 	app.post('/api/searchCity',EventController.searchCity)
-	
+	app.post('/api/AttendEvent',EventController.attend)
 	
 	app.get('/google/redirect',	passport.authenticate('google'),Authentication.signgoogle)
 	
